@@ -54,4 +54,23 @@ class ProductoServiceImplTest {
 		assertEquals(1,totalDespues - totalAntes);
 		
 	}
+
+	@Test
+	public void testEliminar() throws Exception {
+		
+		List<Producto> productos = productoService.listar();
+		int totalAntes = productos.size();
+		
+		if (productos.isEmpty()) return; // test pass
+		
+		Producto ultimoProducto = productos.get(productos.size() - 1);
+		
+		productoService.eliminar(ultimoProducto.getId());
+		
+		productos = productoService.listar();
+		int totalDespues = productos.size();
+		
+		assertEquals(1,totalAntes - totalDespues);
+	}
+
 }
