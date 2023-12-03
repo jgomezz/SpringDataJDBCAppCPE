@@ -14,7 +14,7 @@ import org.springframework.stereotype.Repository;
 import pe.edu.tecsup.springbootapp.entities.Categoria;
 
 /**
- * Clase para procesar un fila de la consulta
+ * Clase para procesar un registro de la consulta de las categoria
  * 
  * @author jgomez
  *
