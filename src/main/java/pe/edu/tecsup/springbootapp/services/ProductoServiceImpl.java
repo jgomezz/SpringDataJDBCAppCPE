@@ -25,6 +25,20 @@ public class ProductoServiceImpl implements ProductoService {
 		
 		log.info("Call listar() ....! ");
 		return productoRepository.listar();
+	}
+
+
+	@Override
+	public void registrar(Producto producto) throws Exception {
+		log.info("call registrar(producto: " + producto + ")");
+		productoRepository.registrar(producto);
+	}
+	
+	@Override
+	public void eliminar(Long id) throws Exception {
+		log.info("call eliminar(id: " + id + ")");
+		productoRepository.eliminar(id);
+		
 	}  
 
 	

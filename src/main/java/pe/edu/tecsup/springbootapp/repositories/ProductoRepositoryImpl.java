@@ -82,4 +82,40 @@ public class ProductoRepositoryImpl implements ProductoRepository {
 		return productos;
 	}
 
+	@Override
+	public void registrar(Producto producto) throws Exception {
+		
+		log.info("call registrar(producto: " + producto + ")");
+		
+		String sql = 
+				"""
+				INSERT INTO productos (categorias_id, nombre, descripcion, precio, 
+   				                       stock, imagen_nombre, imagen_tipo, imagen_tamanio)  
+				VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+				""";
+		
+		jdbcTemplate.update(sql, 
+				producto.getCategorias_id(), 
+				producto.getNombre(), 
+				producto.getDescripcion(),
+				producto.getPrecio(),
+				producto.getStock(),
+				producto.getImagen_nombre(),
+				producto.getImagen_tipo(),
+				producto.getImagen_tamanio());
+		
+	}
+
+	@Override
+	public void eliminar(Long id) throws Exception {
+		
+		log.info("call eliminar(id: " + id + ")");
+		
+		String sql = "DELETE FROM productos WHERE id = ?";
+		
+		jdbcTemplate.update(sql, id);
+
+		
+	}
+
 }
