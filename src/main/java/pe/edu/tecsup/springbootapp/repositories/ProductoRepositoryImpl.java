@@ -57,14 +57,26 @@ public class ProductoRepositoryImpl implements ProductoRepository {
 	public List<Producto> listar() throws Exception {
 		log.info("call listar()");
 
-		String sql =  " SELECT p.id, p.categorias_id, c.nombre AS categorias_nombre, "
-					+ " p.nombre, p.descripcion, p.precio, p.stock, p.imagen_nombre, "
-					+ " p.imagen_tipo, p.imagen_tamanio, p.creado, p.estado " 
-					+ " FROM productos p " 
-					+ " INNER JOIN categorias c ON c.id=p.categorias_id "
-					+ " WHERE estado=1 " 
-					+ " ORDER BY id";
-
+		String sql = 
+					"""
+					 SELECT p.id, 
+					       p.categorias_id, 
+						   c.nombre AS categorias_nombre,
+					       p.nombre, 
+					       p.descripcion, 
+					       p.precio, 
+					       p.stock, 
+					       p.imagen_nombre, 
+						   p.imagen_tipo, 
+					       p.imagen_tamanio, 
+					       p.creado, 
+					       p.estado 
+					 FROM productos p 
+					 INNER JOIN categorias c ON c.id=p.categorias_id 
+					 WHERE estado = 1 
+					 ORDER BY id
+					""";
+				
 		List<Producto> productos = jdbcTemplate.query(sql, new ProductoRowMapper());
 
 		return productos;
