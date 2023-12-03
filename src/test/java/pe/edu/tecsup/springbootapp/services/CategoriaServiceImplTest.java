@@ -1,6 +1,5 @@
 package pe.edu.tecsup.springbootapp.services;
 
-import static org.hamcrest.CoreMatchers.is;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.List;
