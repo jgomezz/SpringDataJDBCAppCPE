@@ -27,4 +27,31 @@ class ProductoServiceImplTest {
 		assertEquals(false, prods.isEmpty());
 	}
 
+	
+	@Test
+	void testRegistar() throws Exception {
+		
+		List<Producto> productos = productoService.listar();
+		
+		int totalAntes = productos.size();
+		
+		Producto producto = new Producto();
+		producto.setCategorias_id(1L);
+		producto.setNombre("AMD");
+		producto.setDescripcion("AMD X10");
+		producto.setPrecio(280.0);
+		producto.setStock(6);
+		producto.setEstado(1);
+		
+		// Grabar producto
+		productoService.registrar(producto);
+		
+		//
+		productos = productoService.listar();
+		int totalDespues = productos.size();
+		
+		// Verifica si hay un registro mas
+		assertEquals(1,totalDespues - totalAntes);
+		
+	}
 }

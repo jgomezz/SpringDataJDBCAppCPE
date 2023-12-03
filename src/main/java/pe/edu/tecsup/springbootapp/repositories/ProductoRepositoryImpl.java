@@ -90,8 +90,8 @@ public class ProductoRepositoryImpl implements ProductoRepository {
 		String sql = 
 				"""
 				INSERT INTO productos (categorias_id, nombre, descripcion, precio, 
-   				                       stock, imagen_nombre, imagen_tipo, imagen_tamanio)  
-				VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+   				                       stock, imagen_nombre, imagen_tipo, imagen_tamanio, estado)  
+				VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
 				""";
 		
 		jdbcTemplate.update(sql, 
@@ -102,7 +102,8 @@ public class ProductoRepositoryImpl implements ProductoRepository {
 				producto.getStock(),
 				producto.getImagen_nombre(),
 				producto.getImagen_tipo(),
-				producto.getImagen_tamanio());
+				producto.getImagen_tamanio(),
+				producto.getEstado());
 		
 	}
 
