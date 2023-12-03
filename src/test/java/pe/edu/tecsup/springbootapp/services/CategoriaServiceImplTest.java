@@ -22,6 +22,7 @@ class CategoriaServiceImplTest {
 		List<Categoria> cats = categoriaService.listar();
 	
 		// Verifica que existan categorias
+		//     VALOR_ESPERADO  VALOR_OBTENIDO
 		assertEquals(false, cats.isEmpty());
 		
 	}
